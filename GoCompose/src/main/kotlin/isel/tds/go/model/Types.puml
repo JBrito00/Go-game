@@ -1,0 +1,40 @@
+@startuml
+
+class Board
+
+enum Stone{
+BLACK
+WHITE
+}
+
+class Position{
+index: Int
+}
+
+Board *--> "*" Move : moves
+Board <|-- BoardRun
+Board <|-- BoardFinish
+
+BoardRun o--> Stone : turn
+BoardRun <|-- BoardPass
+BoardRun o--> Points : captures
+
+BoardFinish o--> Points : score
+
+Move o--> Position : pos
+Move o--> Stone : stone
+
+Group o--> "*" Stone : stone
+Group o--> Position : positions
+
+Position ..> Row : row
+Position ..> Column : column
+
+
+
+
+
+
+
+
+@enduml
